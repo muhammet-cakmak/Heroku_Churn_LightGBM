@@ -18,19 +18,16 @@
 
      <!-- Main Input For Receiving Query to our ML -->
     <form action="{{ url_for('predict')}}"method="post">
-    	<div style="margin: 25px;">
-	        <input type="text" name="CreditScore" class="form-control" style="margin: 3px" placeholder="Credit Score(eg: 632)">
-	        <input type="text" name="Geography" class="form-control" style="margin: 3px" placeholder="Geography (Germany, France, Spain)">
-	        <input type="text" name="Gender" class="form-control" style="margin: 3px" placeholder="Gender(Male, Female)">
-	        <input type="text" name="Age" class="form-control" style="margin: 3px" placeholder="Age(eg: 25)">
-	        <input type="text" name="Tenure" class="form-control" style="margin: 3px" placeholder="Tenure(Time since member)">
-
-	        <input type="text" name="Balance" class="form-control" style="margin: 3px" placeholder="Balance(eg: 500000)">
-	        <input type="text" name="NumOfProducts" class="form-control" style="margin: 3px" placeholder="Num Of Products(eg: 2)">
-	        <input type="text" name="HasCrCard" class="form-control" style="margin: 3px" placeholder="Has Credit Card('1'=Yes, '0'=No)">
-	        <input type="text" name="IsActiveMember" class="form-control" style="margin: 3px" placeholder="Is Active Member?('1'=Yes, '0'=No)">
-	        <input type="text" name="EstimatedSalary" class="form-control" style="margin: 3px" placeholder="Estimated Salary(eg: 25000)">
-    	</div>
+      <input type="text" name="CreditScore" placeholder="Credit Score(eg: 632)" required="required" />
+        <input type="text" name="Geography" placeholder="Geography (Germany, France, Spain)" required="required" />
+    <input type="text" name="Gender" placeholder="Gender(Male, Female)" required="required" />
+    <input type="text" name="Age" placeholder="Age(eg: 25)" required="required" />
+        <input type="text" name="Tenure" placeholder="Tenure(Time since member)" required="required" />
+    <input type="text" name="Balance" placeholder="Balance(eg: 500000)" required="required" />
+    <input type="text" name="NumOfProducts" placeholder="Num Of Products(eg: 2)" required="required" />
+        <input type="text" name="HasCrCard" placeholder="Has Credit Card('1'=Yes, '0'=No)" required="required" />
+    <input type="text" name="IsActiveMember" placeholder="Is Active Member?('1'=Yes, '0'=No)" required="required" />
+    <input type="text" name="EstimatedSalary" placeholder="Estimated Salary(eg: 25000)" required="required" />
 
         <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
     </form>
