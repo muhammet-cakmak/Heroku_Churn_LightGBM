@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
-
 
 from flask import Flask, jsonify, request, render_template
 import pandas as pd
@@ -11,9 +9,8 @@ import json
 import pickle
 
 
-from sklearn.preprocessing import LabelEncoder, OneHotEncoder
-from sklearn.compose import ColumnTransformer
-from sklearn.preprocessing import StandardScaler
+import sklearn  
+from sklearn import preprocessing
 
 
 
@@ -23,27 +20,26 @@ app = Flask(__name__)
 main_cols = pickle.load(open("columns.pkl", 'rb'))
 
 
-# In[3]:
+
 
 
 def clean_data(df_x):
-    le = LabelEncoder()
+    le = preprocessing.LabelEncoder()
     df_x.Gender = le.fit_transform(df_x.Gender)
     df_x = pd.get_dummies(data = df_x,  columns=["Geography"], drop_first = False)
     return df_x
 
 
-# In[4]:
 
-
+"""
 def standardize_data(dta):
                         
     scaler = pickle.load(open("std_scaler.pkl", 'rb'))
     X_transformed = scaler.transform(dta)
     return X_transformed
+"""
 
 
-# In[5]:
 
 
 @app.route('/')
@@ -69,15 +65,20 @@ def predict():
     main_df = sample_df.append(clean_df,sort=False)
     main_df = main_df.fillna(0)
     print(main_df)
+    std_df = main_df.copy()
 
-
-
-
-
+    
+    std_df = std_df.astype(float)
+    """
     std_df = standardize_data(main_df)
     print("std_df yazdırılıyor ******************************")
     print(std_df)
-    
+    """
+    print("DATALAR YAZDIRILIYOR *******************************************************")
+    print(type(std_df))
+    print("DATALAR YAZDIRILIYOR *******************************************************")
+    print(std_df)
+    print("DATALAR YAZDIRILIYOR *******************************************************")
     clf = pickle.load(open('model.pkl', 'rb'))
     pred = clf.predict_proba(std_df)
 
